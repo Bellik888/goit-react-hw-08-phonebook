@@ -5,7 +5,7 @@ import s from './ContactForm.module.css';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../../redux/contacts/selectors';
-import { addThunkContact } from '../../redux/contacts/operations';
+import { addThunkContact } from '../../redux/contacts/contacts-operations';
 
 const ContactForm = () => {
   const dispatch = useDispatch();

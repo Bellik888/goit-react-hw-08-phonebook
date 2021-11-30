@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+// import {contactFilter} from '../contacts/reducers'
 import {
   getThunkContacts,
   addThunkContact,
   deleteThunkContact,
-} from './operations';
-import { contacts } from './reducers';
+} from './contacts-operations';
+// import { contacts } from './reducers';
 
 const SliceContacts = createSlice({
-  name: contacts,
+  name: 'contacts',
   initialState: {
     contacts: [],
     loading: false,
@@ -43,7 +44,7 @@ const SliceContacts = createSlice({
     [addThunkContact.fulfilled]: (state, action) => {
       return {
         ...state,
-        contacts: [...state.contacts, action.payload],
+        contacts: [action.payload, ...state.contacts],
         loading: false,
       };
     },

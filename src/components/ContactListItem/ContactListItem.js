@@ -7,7 +7,7 @@ import { getFilter, getContacts } from '../../redux/contacts/selectors';
 import {
   getThunkContacts,
   deleteThunkContact,
-} from '../../redux/contacts/operations';
+} from '../../redux/contacts/contacts-operations';
 import { Spinner } from '../Spinner/Spinner';
 
 const ContactListItem = () => {

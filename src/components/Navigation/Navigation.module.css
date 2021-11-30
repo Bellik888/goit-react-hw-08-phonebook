@@ -1,0 +1,8 @@
+.list {
+  display: inline-flex;
+  list-style: none;
+}
+.item {
+  text-decoration: none;
+  padding: 15px;
+}

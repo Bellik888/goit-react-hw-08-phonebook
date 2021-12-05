@@ -12,8 +12,8 @@ export const AuthBar = () => {
   };
   return (
     <div className={s.container}>
-      <h2>Hello, {name}</h2>
-      <button type="button" onClick={handleClick}>
+      <h2 className={s.title}>Hello, {name}</h2>
+      <button type="button" onClick={handleClick} className={s.btn}>
         {' '}
         LogOut
       </button>

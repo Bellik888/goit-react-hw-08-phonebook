@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/auth-operations';
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
+import s from './LoginPage.module.css';
 
-export const LoginPage = () => {
-  const history = useHistory();
+const LoginPage = () => {
+  // const history = useHistory();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,38 +23,46 @@ export const LoginPage = () => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(logIn({ email, password }));
-    history.push('/contacts');
+    // history.push('/contacts');
     setEmail('');
     setPassword('');
   };
 
   return (
-    <div>
-      <h1>Please LogIn</h1>
+    <div className={s.container}>
+      <h1 className={s.title}>Please LogIn</h1>
 
-      <form onSubmit={handleSubmit}>
-        <label>
-          Mail
+      <form onSubmit={handleSubmit} className={s.form}>
+        <label className={s.label}>
+          {/* <span className={s.span}>Mail</span> */}
           <input
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
+            placeholder="Mail"
+            className={s.input}
           />
         </label>
 
-        <label>
-          Password
+        <label className={s.label}>
+          {/* <span className={s.span}>Password</span> */}
           <input
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
+            placeholder="Password"
+            className={s.input}
           />
         </label>
 
-        <button type="submit">LogIn</button>
+        <button type="submit" className={s.btn}>
+          LogIn
+        </button>
       </form>
     </div>
   );
 };
+
+export default LoginPage;

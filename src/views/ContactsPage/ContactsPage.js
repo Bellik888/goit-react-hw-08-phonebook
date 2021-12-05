@@ -4,7 +4,7 @@ import ContactForm from '../../components/ContactForm/ContactForm';
 import { ContactList } from '../../components/ContactList/ContactList';
 import ContactListItem from '../../components/ContactListItem/ContactListItem';
 
-export const ContactsPage = () => {
+const ContactsPage = () => {
   return (
     <div className={s.contactsPage}>
       <h1>Phonebook</h1>
@@ -17,3 +17,5 @@ export const ContactsPage = () => {
     </div>
   );
 };
+
+export default ContactsPage;

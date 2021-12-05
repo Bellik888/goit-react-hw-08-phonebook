@@ -1,8 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {} from '../../service/herokuApi';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+
+const toastSettings = {
+  position: 'top-right',
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+};
 
 export const token = {
   set(token) {
@@ -19,9 +31,11 @@ export const register = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/signup', user);
       token.set(data.token);
-      console.log(data);
+      // console.log(data);
+      toast.success('Success', toastSettings);
       return data;
     } catch (error) {
+      toast.error('Not valid', toastSettings);
       return rejectWithValue(error);
     }
   },
@@ -33,10 +47,12 @@ export const logIn = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/logIn', user);
       token.set(data.token);
-      console.log(data);
+      toast.success('Success', toastSettings);
+      // console.log(data);
       return data;
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
+      toast.error('Bad mail or password', toastSettings);
       return rejectWithValue(error);
     }
   },
@@ -48,7 +64,7 @@ export const logOut = createAsyncThunk(
       await axios.post('/users/logout');
       token.unset();
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       return rejectWithValue(error);
     }
   },
@@ -60,7 +76,7 @@ export const fetchCurrentUser = createAsyncThunk(
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
     if (persistedToken === null) {
-      console.log('Токена нет, уходим из fetchCurrentUser');
+      // console.log('Токена нет, уходим из fetchCurrentUser');
       return thunkAPI.rejectWithValue();
     }
     token.set(persistedToken);
@@ -68,7 +84,7 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       return thunkAPI.rejectWithValue(error);
     }
   },

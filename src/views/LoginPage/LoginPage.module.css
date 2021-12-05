@@ -1,0 +1,29 @@
+.container {
+  /* max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid tomato; */
+  /* display: block; */
+  width: 670px;
+  margin: 50px auto 0px;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: rgba(195, 202, 132, 0.596);
+  text-align: center;
+}
+.form {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: rgba(195, 202, 132, 0.596);
+}
+.label {
+  display: block;
+  margin-bottom: 20px;
+}
+.btn {
+  background-color: rgb(184, 140, 22);
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+}
